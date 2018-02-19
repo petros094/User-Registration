@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/LoginStyle.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="wrapper">
+        <form class="form-signin" action="/Account/Login" method="post">
+            <h2 class="form-signin-heading">Account</h2>
+            <input type="text" class="form-control" name="Login" placeholder="Login" required="" autofocus="" />
+            <input type="password" class="form-control" name="Password" placeholder="Password" required="" />
+            <p>@ViewBag.text</p>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
+            <input class="btn btn-lg btn-primary btn-block " style="background-color:blue" type="button" value="Facebook" onclick="location.href='/Account/Facebook'" />
+            <input class="btn btn-lg btn-primary btn-block " style="background-color:red" type="button" value="Google+" onclick="location.href='/Account/ExternalLogin'" />
+        </form>
+    </div>
+</body>
+</html>

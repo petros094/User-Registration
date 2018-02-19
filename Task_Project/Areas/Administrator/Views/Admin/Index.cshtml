@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Task_Project.Models.Entities.User>
+@{
+    ViewBag.Title = "Index";
+}
+<p>
+    <h2>Admin</h2>
+</p>
+<form action="/Administrator/Admin/Index">
+    <label for="Filter">Filter by:</label>
+    <select id="Filter" name="Filter">
+        <option value=""> Select Filter</option>
+        <option value="Gender">Gender</option>
+        <option value="CreationDate">Creation Date</option>
+        <option value="Age">Age</option>
+        <option value="Name">Name</option>
+        <option value="Block">Block</option>
+        <option value="UnBlock">UnBlock</option>
+
+    </select>
+    <input type="submit" value="Filter"/>
+</form>
+<table class="table">
+    <tr>
+        <th>
+            FirstName
+        </th>
+        <th>
+            Lastname
+        </th>
+        <th>
+            Gender
+        </th>
+        <th>
+            Age
+        </th>
+        <th>
+            CreationDate
+        </th>
+        <th>
+            Login
+        </th>
+        <th>
+            Password
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.FirstName
+            <td>
+                @item.Lastname
+            </td>
+            <td>
+                @item.Gender
+            </td>
+            <td>
+                @item.Age
+            </td>
+            <td>
+                @item.CreationDate
+            </td>
+            <td>
+                @item.Login
+            </td>
+            <td>
+                @item.Password
+            </td>
+            @if (item.IsBlocked)
+            {
+                <td><input type="button" value="Unblock" class="btn btn-danger"  onclick="location.href='/Admin/TriggerUser?id=@item.UserId'"/></td>
+            }
+            else
+            {
+             <td><input type="button" value="Block" class="btn btn-success"  onclick="location.href='/Admin/TriggerUser?id=@item.UserId'"/></td>
+            }
+            <td><input type="button" value="Delete" class="btn btn-warning" onclick="location.href='/Admin/Delete?id=@item.UserId'"/></td>
+        </tr>
+    }
+</table>
